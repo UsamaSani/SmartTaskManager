@@ -1,0 +1,311 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.colors{
+    color: #3c210a;
+    color: #9f4f12;
+    color: #fed8a7;
+    color: #f2c999;
+}
+.head{
+    /* height: 100dvh; */
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+    background: linear-gradient(to right, #3c210a, #9f4f12);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.togleBtn{
+    background-color: #f2c999;
+    cursor: pointer;
+    color: #3c210a;
+    font-weight: bolder;
+    padding: 1rem;
+    width: 80%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    box-shadow: 0 0.3rem 1rem black;
+    transition: background-color 0.8s ease;
+}
+.togleBtn:hover{
+    background:none;
+    color: #fed8a7;
+}
+.main{
+    background-color: #fed8a7;
+    padding: 1rem;
+}
+.main h1{
+    font-size: 3rem;
+}
+.navBar{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.search{
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search input{
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 1rem;
+    background: none;
+}
+.search button{
+    padding: 1rem;
+    border: none;
+    background-color: #f2c999;
+    margin-left: 0.4rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background-color 0.8s ease;
+}
+.search button:hover{
+    background-color: #9f4f12;
+}
+.navBtn{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.navBtn button{
+    padding: 0.7rem;
+    font-weight: bolder;
+    margin: 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #f2c999;
+    transition: background-color 0.8s ease;
+    width: 7rem;
+    cursor: pointer;
+}
+.navBtn button:hover{
+    background-color: #9f4f12;
+}
+hr{
+    border: 1px solid black;
+}
+.taskList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.noTask{
+    margin: 1rem;
+    color: grey;
+    text-align: center;
+}
+.back{
+    margin: 1rem;
+    display: none;
+    background: none;
+    font-weight: bolder;
+    cursor: pointer;
+    /* padding: 0.7rem; */
+    color: #3c210a;
+    border: none;
+    /* border: 1px solid #3c210a; */
+}
+.createTask button{
+    padding: 0.2rem;
+    font-size: 2rem;
+    background: none;
+    border: 1px solid #3c210a;
+    color: #3c210a;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 16rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.8s ease;
+}
+.createTask button:hover{
+    background-color: #9f4f12;
+    color: #fed8a7;
+}
+.form{
+    width: 80%;
+    background-color: #f2c999;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#warning{
+    color: red;
+    margin: 0.7rem;
+}
+.form h2{
+    padding: 1rem;
+}
+.form input{
+    width: 90%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid #3c210a;
+    border-radius: 1rem;
+    background: none;
+    margin-bottom: 1rem;
+}
+.form textarea{
+    width: 90%;
+    padding: 1rem;
+    border: 1px solid #3c210a;
+    border-radius: 1rem;
+    background: none;
+    margin-bottom: 1rem;
+}
+.formBtn{
+    display: flex;
+}
+.formBtn button{
+    padding: 0.7rem;
+    font-weight: bolder;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #fed8a7;
+    transition: background-color 0.8s ease;
+    width: 6rem;
+}
+.formBtn button:hover{
+    background-color: #9f4f12;
+}
+#confirm{
+    display: none;
+}
+footer{
+    font-weight: bolder;
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(to right, #3c210a, #9f4f12);
+}
+.taskDescription{
+    display: none;
+    padding: 1rem;
+    width: 100%;
+    background-color: #f2c999;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-style: italic;
+}
+.task{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.taskOl{
+    width: 100%;
+    list-style-type: decimal;
+}
+.taskLi{
+    background: linear-gradient(to right, #3c210a, #9f4f12);
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fed8a7;
+    cursor: pointer;
+}
+.taskLi button{
+    padding: 0.7rem;
+    font-weight: bolder;
+    border: none;
+    border-radius: 1rem;
+    background-color: #fed8a7;
+    transition: background-color 0.8s ease;
+    cursor: pointer;
+    color:#3c210a;
+}
+.taskLi button:hover{
+    background-color: #9f4f12;
+    box-shadow: 0rem 0rem 6rem 0.5rem;
+}
+.sr{
+    display: flex;
+    align-items: center;
+    width: 2rem;
+    justify-content: space-between;
+}
+.taskSubject{
+    display: inline-block;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-weight: bolder;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+#highlightedList , #reminderList{
+    display: none;
+    width: 70%;
+    padding: 1rem;
+    color: #f2c999;
+    font-weight: bolder;
+}
+#reminderList li{
+    cursor: pointer;
+}
+#highlightedList li{
+    cursor: pointer;
+}
+#highlightedList li:hover{
+    text-decoration: underline;
+}
+#reminderList li:hover{
+    text-decoration: underline;
+}
+@media screen and (min-width: 469px) and (max-width: 1000px) {
+.navBtn{
+    width: 80%;
+}
+.form textarea{
+    height: 10rem;
+}
+}
+@media screen and (min-width: 1000px){
+    .form{
+        width: 65%;
+    }
+    .search input{
+        width: 26rem;
+    }
+    .search button{
+        width: 7rem;
+        padding: 0.7rem;
+    }
+    .task{
+        width: 67%;
+    }
+    #highlightedList, #reminderList{
+        width: 65%;
+    }
+    .togleBtn{
+        width: 65%;
+    }
+    .form textarea{
+        height: 10rem;
+    }
+}

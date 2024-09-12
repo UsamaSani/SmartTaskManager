@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav></nav>
+        <div class="head">
+            <div class="togleBtn" id="highlightsListBtn"><p>TASK HIGHLIGHTS</p></div>
+            <div id="highlightedList"></div>
+            <div class="togleBtn" id="remindersListBtn">TASK REMINDERS</div>
+            <div id="reminderList"></div>
+            <div class="togleBtn" id="todoList">TODO LIST</div>
+        </div>
+    </header>
+
+<section>
+    <div class="main">
+        <h1>TODO LIST</h1>
+        <div class="navBar">
+            <div class="search"><input type="text" placeholder="Search Task" id="SearchBox"><button id="Search">Search</button></div>
+            <div class="navBtn">
+                <button id="Highlight">Highlight</button>
+                <button id="Reminder">Reminder</button>
+                <button id="SelectAll">SelectAll</button>
+                <button id="Delete">Delete</button>
+            </div>
+        </div>
+        <hr>
+        <div class="taskList">
+            <p id="noTask" class="noTask">Create a Task</p>
+            <div class="task" id="Task"></div>
+            <button class="back" id="back">Back</button>
+            <div class="form" id="Form">
+                <h2>ADD TASK</h2>
+                <span id="warning"></span>
+                <input type="text" placeholder="SUBJECT:" id="Subject">
+                <textarea name="" id="Description" placeholder="DESCRIPTION"></textarea>
+                <div class="formBtn"><button id="confirm">CONFIRM</button><button id="addTask">ADD</button><button id="cancelTask">Cancel</button></div>
+            </div>
+            <div class="createTask" ><Button id="createTask">+</Button></div>
+        </div>
+    </div>
+</section>
+<footer><p>CopyRights &copy; Reserved By Usama Sani</p></footer>
+    <script src="./app.js"></script>
+</body>
+</html>
