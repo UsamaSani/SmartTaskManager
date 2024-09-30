@@ -319,12 +319,33 @@ function highLightTask(){
     if(taskCanAdd == true || taskiInList == false){
         highLightList.innerHTML = ""
         for(i = 0 ; i < highLightListarr.length ; i++){
-            let li = document.createElement("li")
+            let li = document.createElement("li")        
+            let delebtnh = document.createElement("a")
+            let divForH = document.createElement("div")
+
             for(j = 0 ; j < taskListarr.length ; j++){
                 if(taskListarr[j].Subject == highLightListarr[i]){
                     let temp = taskListarr[j]
                     li.className  = "hlist"
+                    divForH.className  = "dhlist"
+                    li.className  = "hlist"
+                    delebtnh.innerText = "Delete"
+                    delebtnh.className = "deltebtnr"
                     li.innerText  = `${temp.Subject}`
+                    divForH.append(li)
+                    divForH.append(delebtnh)
+                    delebtnh.addEventListener('click',(event)=>{
+                        let deleteliElement = event.target.closest(".dhlist")
+                        let delteTaskOfHighlight = deleteliElement.querySelector(".hlist")
+                        for(i = 0 ; i < highLightListarr.length ; i++){
+                            if(highLightListarr[i] == delteTaskOfHighlight.innerText){
+                                highLightListarr.splice(i,1)
+                                // highLightTask()
+                            }
+                        }
+                        console.log(delteTaskOfHighlight)
+                        deleteliElement.remove()
+                    })
                     li.addEventListener('click',()=>{
                         let a = taskDiv.querySelectorAll(".taskSubject")
                         a.forEach((a)=>{
@@ -335,7 +356,7 @@ function highLightTask(){
                         })
                     })
                 }      
-                ol.append(li)
+                ol.append(divForH)
             }
         }
         highLightList.append(ol)
@@ -374,42 +395,68 @@ function reminderTask(displayUpdate){
     let hour_sec_mint      = ""
     let choice             = ""
     let time               = 0
+    let tasksSubject       = []
     let checkboxTasks = document.querySelectorAll('li .taskLi input[type="checkbox"]');
+    let pushTaskInReminder = false
+    let taskIsChecked = false
     try {
         checkboxTasks.forEach(function(check){
             if(check.checked ){
-                let tasksSubject = check.closest('.taskLi').querySelector('.taskSubject');
+                taskIsChecked = true
+                tasksSubject.push(check.closest('.taskLi').querySelector('.taskSubject'))
                 for ( i = 0 ; i < reminderListarr.length ; i++) {
-                    if(reminderListarr[i] == tasksSubject.innerText){
-                        alert(`This task ${reminderListarr}  is already in Reminder List`)
-                        taskInList = true
-                        break
+                    for(j = 0; j < tasksSubject.length ; j++){
+                        if(reminderListarr[i] == tasksSubject[j].innerText){
+                            alert(`This task ${reminderListarr}  is already in Reminder List`)
+                            taskInList = true
+                            break
+                        }
                     }
                 }
                 if(taskInList == true){
                     throw 'break';
                 }
-                if(taskInList == false){
-                    choice         = prompt("Select the time in which you wanted to be reminded h/m/s write any of these alphabet")
-                    if(choice == null){
-                        console.log("choice prompt input is empty",choice)
-                    }
-                    else{
-                         console.log("choice prompt input is empty",choice)
-                         hour_sec_mint  = prompt("Enter Time")
-                     }
-                    if(hour_sec_mint == null || hour_sec_mint == ""){
-                        console.log("hour_sec_mint prompt is empty",hour_sec_mint)
-                    }else{
-                    console.log("hour_sec_mint prompt is empty",hour_sec_mint)
-                    reminderListarr.push(tasksSubject.innerText)
-                    console.log(reminderListarr)
-                    taskCanAdd = true
-                    }
-                }
                 
             }
         })    
+        if(taskIsChecked == true){
+            let x = true
+            do{
+            choice         = prompt("Select the time in which you wanted to be reminded h/m/s write any of these alphabet")
+            if(choice == "h" || choice == "m" || choice == "s" || choice == null){
+                break;
+            }
+            }while(x)
+            if(choice == null || choice == ""){
+                console.log("choice prompt input is empty",choice)
+            }
+            else{
+                let y = true
+                do{
+                     hour_sec_mint  = prompt("Enter Time")
+                    if(!isNaN(hour_sec_mint)){
+                        break;
+                    }
+                 }while(y)
+             }
+            if(hour_sec_mint == null || hour_sec_mint == "" ||hour_sec_mint === undefined){
+                console.log("hour_sec_mint prompt is empty")
+            }else{
+                pushTaskInReminder = true
+            }
+        }
+        if(taskInList == false){
+            if(pushTaskInReminder == true){
+                for(i= 0; i < tasksSubject.length;i++){
+                    reminderListarr.push(tasksSubject[i].innerText)
+                    console.log(reminderListarr)
+                    console.log(tasksSubject[i])
+                    taskCanAdd = true
+
+                }
+            }
+           
+        }
     } catch (error) {
         console.log(error)
     }
@@ -419,7 +466,7 @@ function reminderTask(displayUpdate){
 
     // }
 
-         switch (choice.trim().toLocaleLowerCase()) {
+         switch (choice.toLowerCase().trim()) {
              case "h":
                  time = hour_sec_mint*3600000
                  break;
@@ -435,11 +482,30 @@ function reminderTask(displayUpdate){
     // reminderListDisplay()
     for(i = 0 ; i < reminderListarr.length ; i++){
         let li = document.createElement("li")
+        let delebtnr = document.createElement("a")
+        let divForR = document.createElement("div")
         for(j = 0 ; j < taskListarr.length ; j++){
             if(taskListarr[j].Subject == reminderListarr[i]){
                 let temp = taskListarr[j]
+                divForR.className  = "drlist"
                 li.className  = "rlist"
+                delebtnr.innerText = "Delete"
+                delebtnr.className = "deltebtnr"
                 li.innerText  = `${temp.Subject}`
+                divForR.append(li)
+                divForR.append(delebtnr)
+                delebtnr.addEventListener('click',(event)=>{
+                    let deleteliElement = event.target.closest(".drlist")
+                    let delteTaskOfReminder = deleteliElement.querySelector(".rlist")
+                    for(i = 0 ; i < reminderListarr.length ; i++){
+                        if(reminderListarr[i] == delteTaskOfReminder.innerText){
+                            reminderListarr.splice(i,1)
+                            // reminderTask(x = true)
+                        }
+                    }
+                    console.log(delteTaskOfReminder)
+                    deleteliElement.remove()
+                })
                 li.addEventListener('click',()=>{
                     let a = taskDiv.querySelectorAll(".taskSubject")
                     a.forEach((a)=>{
@@ -450,7 +516,7 @@ function reminderTask(displayUpdate){
                     })
                 })
             }      
-            ol.append(li)
+            ol.append(divForR)
         }
     }
     reminderList.append(ol)
@@ -480,6 +546,7 @@ todoList.addEventListener('click',()=>{
 
 navDeleteBtn.addEventListener('click',deleteTask)
 function deleteTask(){
+    let deleteRTask = true
     let checkboxTasks = document.querySelectorAll('li .taskLi input[type="checkbox"]');
     checkboxTasks.forEach(function(check){
         if(check.checked){
@@ -494,7 +561,8 @@ function deleteTask(){
             for(i = 0 ; i < reminderListarr.length ; i++){
                 if(reminderListarr[i] == tasksSubject.innerText){
                     reminderListarr.splice(i,1)
-                    reminderTask()
+                    deleteRTask = true
+                    reminderTask(deleteRTask)
                 }
             }
 

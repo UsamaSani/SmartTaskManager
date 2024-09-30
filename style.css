@@ -277,6 +277,20 @@ footer{
 #reminderList li:hover{
     text-decoration: underline;
 }
+.dhlist{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.drlist{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.deltebtnr:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
 @media screen and (min-width: 469px) and (max-width: 1000px) {
 .navBtn{
     width: 80%;
