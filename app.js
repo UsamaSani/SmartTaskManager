@@ -30,6 +30,8 @@ let confirmBtn       = document.getElementById("confirm")
 let sr = 0
 let tempName;
 
+
+
 createTask.addEventListener('click',()=>{
     form.style.display       = "flex"
     addTask.style.display    = "block"
@@ -140,10 +142,11 @@ confirmBtn.addEventListener('click',()=>{
     let taskFound = false
     let skipName;
     let tempNum;
+    let displayUpdate = false
 // this function check taskList before updating the task, that if the task with same subject 
 // is exist except for the updating task it shows message that task subject is already exist.
-// i create thhis functionality beacause i create a feature that user can't create the task with 
-// the same subject so when he create the task with the same subject he immediatelly remember  
+// i create thhis functionality beacause i create a feature in which user can't create the task  
+// with the same subject so when he create the task with the same subject he immediatelly remember  
 // that he already have a task with that subject
     for(i = 0 ; i < taskListarr.length ; i++){
         let temp = taskListarr[i]
@@ -198,7 +201,8 @@ confirmBtn.addEventListener('click',()=>{
                 highLightTask()
             }
             if(rFound === true){
-                reminderTask()
+                displayUpdate = true
+                reminderTask(displayUpdate)
             }
             warning.innerText = ""
 
@@ -362,7 +366,7 @@ reminderListBtn.addEventListener('click',()=>{
 
 navReminderBtn.addEventListener('click',reminderTask)
 
-function reminderTask(update){
+function reminderTask(displayUpdate){
     let taskInList         = false
     let taskCanAdd         = false
     let ol                 = document.createElement("ol")
@@ -386,9 +390,22 @@ function reminderTask(update){
                     throw 'break';
                 }
                 if(taskInList == false){
+                    choice         = prompt("Select the time in which you wanted to be reminded h/m/s write any of these alphabet")
+                    if(choice == null){
+                        console.log("choice prompt input is empty",choice)
+                    }
+                    else{
+                         console.log("choice prompt input is empty",choice)
+                         hour_sec_mint  = prompt("Enter Time")
+                     }
+                    if(hour_sec_mint == null || hour_sec_mint == ""){
+                        console.log("hour_sec_mint prompt is empty",hour_sec_mint)
+                    }else{
+                    console.log("hour_sec_mint prompt is empty",hour_sec_mint)
                     reminderListarr.push(tasksSubject.innerText)
                     console.log(reminderListarr)
                     taskCanAdd = true
+                    }
                 }
                 
             }
@@ -396,12 +413,12 @@ function reminderTask(update){
     } catch (error) {
         console.log(error)
     }
-    if(taskInList == false){
+    if(taskCanAdd == true || displayUpdate == true){
         reminderList.innerHTML = ""
-    if(taskCanAdd == true){
-         choice         = prompt("Select the time in which you wanted to be reminded h/m/s write any of these alphabet")
-         hour_sec_mint  = prompt("Enter Time")
-    }
+    // if(taskCanAdd == true ){
+
+    // }
+
          switch (choice.trim().toLocaleLowerCase()) {
              case "h":
                  time = hour_sec_mint*3600000
@@ -415,6 +432,7 @@ function reminderTask(update){
             default:
                 break;
     }
+    // reminderListDisplay()
     for(i = 0 ; i < reminderListarr.length ; i++){
         let li = document.createElement("li")
         for(j = 0 ; j < taskListarr.length ; j++){
@@ -451,6 +469,7 @@ function reminderTask(update){
             alert(`you have ${count} task todo`)
         }
     },time)
+
  }
  console.log(`ye reminder list he  ${reminderListarr}`)
 }
